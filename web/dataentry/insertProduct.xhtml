@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Insert product || BS
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+                <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="product.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertProduct.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateProduct.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteProduct.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showProduct.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                    <h:form>
+                        <p:growl id="growl" life="20000"/>
+                        <p:panelGrid columns="2">                            
+                            <p:outputLabel for="pname" value="Product Name"/>
+                            <p:inputText id="pname" value="#{p.product.proName}" placeholder="product name" immediate="false" rendered="true"/>
+                            <p:outputLabel for="insert1" />
+                            <p:commandButton id="insert1" value="Save" action="#{p.doInsertProduct}" ajax="false" styleClass="btn btn-primary" update="growl"/>
+                        </p:panelGrid>
+                    </h:form>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

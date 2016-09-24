@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                title
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+                <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="javascript:;"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertEmployee.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateEmployee.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteEmployee.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showEmployee.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <h2>//Add new Employee</h2>
+                <hr/>
+                <div id="f1">
+                    <h:form>
+                        <table class="formTable">
+                            <tr>
+                                <th>Employee Name</th>
+                                <td><p:inputText id="empName" value="#{employeeMB.ename}" placeholder="Employee name" autocomplete="false" rendered="true"/>   
+                                </td>  
+                                <td class="msgtd">  <p:message for="empName" /></td>
+                            </tr>
+
+                            <tr>
+                                <th>Email Address</th>
+                                <td><p:inputText id="email" value="#{employeeMB.email}"/></td>
+                                <td class="msgtd">  <p:message for="email" /></td>                                
+                            </tr>
+                            <tr>
+                                <th>Mobile</th>
+                                <td><p:inputText id="mobile" value="#{employeeMB.mobile}" /></td>
+                                <td class="msgtd">  <p:message for="mobile" /></td>  
+                            </tr>
+                            <tr>
+                                <th>Designation</th>
+                                <td>
+                                    <p:selectOneMenu id="designation" value="#{employeeMB.designation}" style="width:150px" required="true" requiredMessage="Select designation.">
+                                        <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="BM" itemValue="BM" />
+                                        <f:selectItem itemLabel="Manager" itemValue="Manager" />
+                                        <f:selectItem itemLabel="Supervisor" itemValue="Supervisor" />
+                                        <f:selectItem itemLabel="SR" itemValue="SR" />
+                                        <f:selectItem itemLabel="Suplier" itemValue="Suplier" />
+                                        <f:selectItem itemLabel="Driver" itemValue="Driver" />
+                                    </p:selectOneMenu>
+                                </td>
+                                <td class="msgtd">  <p:message for="designation" /></td>  
+                            </tr>
+                            <tr>
+                                <th>Phone No.</th>
+                                <td><p:inputText id="phone" value="#{employeeMB.phone}"/></td>
+                            </tr>
+                            <tr>
+                                <th>Hire Date</th>
+                                <td>
+                                    <p:calendar id="german" value="#{employeeMB.date}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+                                </td>
+                                <td class="msgtd">  <p:message for="designation" /></td>  
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <p:commandButton value="Submit" actionListener="#{employeeMB.doInsert()}" ajax="false" styleClass="ui-priority-primary" />
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                    <hr/>
+                    <div class="container-fluid">
+                        <h3 style="margin-top:0">Employee Table</h3>
+                        <p:dataTable var="car" value="#{dtScrollView.cars1}" scrollable="true" scrollHeight="150">
+                            <p:column headerText="Employee Id" footerText="Employee Id">
+                                <h:outputText value="#{car.id}" />
+                            </p:column>
+                            <p:column headerText="Employee Name" footerText="Employee Name">
+                                <h:outputText value="#{car.year}" />
+                            </p:column>
+                            <p:column headerText="Employee Eamil" footerText="Employee Eamil">
+                                <h:outputText value="#{car.brand}" />
+                            </p:column>
+                            <p:column headerText="Employee Mobile" footerText="Employee Mobile">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>
+                            <p:column headerText="Phone No." footerText="Phone No.">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>
+                            <p:column headerText="Hire Date" footerText="Hire Date">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+       <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Manager || BS
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+               <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="manager.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertManager.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateManager.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteManager.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showManager.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                 <br/>
+                <br/>
+                <br/>
+                <center>
+                 <f:view>
+                    <h:form>
+                        <p:dataTable var="manager" value="#{m.managerAllList}">
+                            <p:column headerText="Manager Id">
+                                <h:outputText value="#{manager.MId}" />
+                            </p:column>
+
+                            <p:column headerText="Manager Name">
+                                <h:outputText value="#{manager.MName}" />
+                            </p:column>
+                            <p:column headerText="Employee Id">
+                                <h:outputText value="#{manager.employee.empId}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+                </f:view>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

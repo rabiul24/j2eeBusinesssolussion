@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+       <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Show B-MAnager || BS
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+               <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="bManager.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertBManager.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateBManager.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteBManager.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showBManager.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <f:view>
+                    <h:form>
+                        <p:dataTable var="bmanager" value="#{b.bmanagerallList}">
+                            <p:column headerText="BM Id">
+                                <h:outputText value="#{bmanager.bmId}" />
+                            </p:column>
+
+                            <p:column headerText="BM Name">
+                                <h:outputText value="#{bmanager.bmName}" />
+                            </p:column>
+                            <p:column headerText="Employee Id">
+                                <h:outputText value="#{bmanager.employee.empId}" />
+                            </p:column>
+                            <p:column headerText="Location Id">
+                                <h:outputText value="#{bmanager.location.locId}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+                </f:view>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

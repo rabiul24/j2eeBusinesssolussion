@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Purchases || BS
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content"> 
+                <br/>
+                <br/>
+                <br/>
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/purchases.css"/>
+                    <h:outputScript name="./js/btnctrl.js"/>
+                </f:facet>              
+                <h:form id="form">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-2"> <h:outputLabel for="menu" value="Select product" /></div>
+                            <div class="col-md-3"> 
+                                <p:selectCheckboxMenu   id="menu" value="#{pur.selectedPoduct}" label=" Select Products" style="width: 200px !important;"
+                                                       filter="true" filterMatchMode="startsWith" panelStyle="width:250px" >
+                                   
+                                    <f:selectItems value="#{pur.productList}" var="v1" itemValue="#{v1.pro_Name}" itemLabel="#{v1.pro_Name}" /> 
+
+                                </p:selectCheckboxMenu>
+
+                            </div>
+                            <div class="col-md-2"> 
+                                <p:commandButton value="Show" actionListener="#{pur.createPurForm()}" update="display" icon="fa fa-plus"
+                                                 class="btn btn-warning"  id="showbtn" rendered="#{pur.doAct}" ajax="false" process=""/>
+                            </div>
+                            <div class="col-md-1"> 
+                                <p:commandButton value="Save" actionListener="#{pur.doSave()}" icon="fa fa-plus"
+                                             class="btn btn-primary"    ajax="false"/>
+                            </div>
+                            <div class="col-md-0" style="float: right !important;">
+                               <!--<p:outputLabel for="german" value="Date:" />-->
+                               <p:calendar id="german" value="#{pur.date}" locale="de" navigator="true" pattern="yyyy-MMM-dd" showOn="button" placeholder="Select date"/>
+
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <p:outputPanel id="display" style="padding-left:5px;margin-top:10px">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>#Id</th>
+                                    <th>Product Name</th>
+                                    <th>Product Serial No.</th>
+                                    <th>Product Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total Prices</th>
+                                </tr>
+                                
+                                <c:forEach  var="pp" items="#{pur.modelPurForm}">
+                                    <c:set var="dm" value="#{pp.pro_Id}"/>
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{pp.pro_Id}"  style="width: 50px !important; border: none !important;"/>
+                                            
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{pp.pro_Name}" style="border: none !important;"/>                                           
+                                        </td>
+                                        <td>
+                                            <p:inputText id="serialno#{pp.pro_Id}" value="#{pur.serialNo[dm]}" placeholder="Serial no."/>
+                                        </td> 
+                                        <td>
+                                            <p:inputNumber id="unitprice#{pp.pro_Id}" value="#{pur.unitPrice[dm]}" placeholder="Unit Price">
+                                                <p:ajax event="change" process="unitprice#{pp.pro_Id}" listener="#{pur.cTotalPrice(dm)}" update="totalprice#{pp.pro_Id}" />
+                                            </p:inputNumber>
+                                        </td>
+                                        <td>
+                                            <p:inputNumber id="qty#{pp.pro_Id}" value="#{pur.qty[dm]}" placeholder="Quantity">
+                                                <p:ajax event="change" process="qty#{pp.pro_Id}" listener="#{pur.cTotalPrice(dm)}" update="totalprice#{pp.pro_Id}"/>
+                                            </p:inputNumber>
+                                        </td>
+                                        <td>
+                                            <p:inputNumber id="totalprice#{pp.pro_Id}" value="#{pur.totalPrice[dm]}" placeholder="Total price">
+
+                                            </p:inputNumber>
+                                        </td>
+                                    </tr>                                    
+                                </c:forEach>                              
+                            </table>
+                        </div>
+                    </p:outputPanel>
+
+
+
+                </h:form>  
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

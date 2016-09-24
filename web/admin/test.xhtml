@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="menu" value="Location:" />
+                <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Cities">
+                    <f:selectItems value="#{checkboxView.cities}" />
+                </p:selectCheckboxMenu>
+                <p:commandLink value="Submit" update="display" action="#{checkboxView.doIn()}" ajax="false" />
+            </h:panelGrid>
+
+            <p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px">
+                <c:forEach begin="1" end="#{checkboxView.test3}">
+                    <p:outputLabel value="#{pur.test}" id="a1"/>
+                    <p:commandButton value="Go" action="#{pur.cTotalPrice()}" ajax="false" update="a1"/>
+                </c:forEach>
+            </p:outputPanel>
+        </h:form>
+       
+    </h:body>
+</html>
+

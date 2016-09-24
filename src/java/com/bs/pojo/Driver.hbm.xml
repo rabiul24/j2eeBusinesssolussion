@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Driver" table="driver" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="DId" type="java.lang.Integer">
+            <column name="D_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="com.bs.pojo.Employee" fetch="select">
+            <column name="Emp_Id" />
+        </many-to-one>
+        <many-to-one name="location" class="com.bs.pojo.Location" fetch="select">
+            <column name="Loc_Id" />
+        </many-to-one>
+        <many-to-one name="supplier" class="com.bs.pojo.Supplier" fetch="select">
+            <column name="Supp_Id" />
+        </many-to-one>
+        <property name="DName" type="string">
+            <column name="D_Name" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

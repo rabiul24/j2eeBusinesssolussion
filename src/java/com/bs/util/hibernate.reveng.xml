@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="marketingmanagement"/>
+  <table-filter match-name="product"/>
+  <table-filter match-name="address"/>
+  <table-filter match-name="ctrl_access"/>
+  <table-filter match-name="supplier"/>
+  <table-filter match-name="role"/>
+  <table-filter match-name="salary"/>
+  <table-filter match-name="driver"/>
+  <table-filter match-name="attendance"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="sr"/>
+  <table-filter match-name="suppervisor"/>
+  <table-filter match-name="sales"/>
+  <table-filter match-name="customer"/>
+  <table-filter match-name="purchases"/>
+  <table-filter match-name="location"/>
+  <table-filter match-name="login"/>
+  <table-filter match-name="category"/>
+  <table-filter match-name="manager"/>
+  <table-filter match-name="employee"/>
+  <table-filter match-name="prices"/>
+  <table-filter match-name="b_ manager"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+         <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Update Location Page
+            </ui:define>
+
+            <ui:define name="left">
+                 <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+                 <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="location.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertLocation.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateLocation.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteLocation.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showLocation1.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <h:form>
+                    <p:growl id="growl" life="20000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="id" value="Location Id"/>
+                        <p:selectOneMenu id="id" value="#{lo.location.locId}" style="width: 185px">
+                            <f:selectItem itemLabel="Select Location Id" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{lo.locationAllList}" var="pp" itemValue="#{pp.locId}" itemLabel="#{pp.locId}"/>
+                            <p:ajax event="change" listener="#{lo.findAllLocationById()}" update=" loname pname"/>
+                        </p:selectOneMenu>                       
+                      
+                        <p:outputLabel for="loname" value="Location Name"/>
+                       
+                        <p:inputText id="loname" value="#{lo.location.locName}" placeholder="Location Name" immediate="false" rendered="true"/>
+                         <p:outputLabel for="pname" value="Employee Id"/>
+                         <p:inputText id="pname" value="#{lo.employee.empId}" placeholder="Employee ID" immediate="false" rendered="true"/>
+                        <p:outputLabel for="update1" />
+                        <p:commandButton id="update1" value="Update" action="#{lo.doUpdateLocation()}" ajax="false" styleClass="btn btn-primary" update="growl"/>
+                    </p:panelGrid>
+                </h:form>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

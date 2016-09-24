@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Suppervisor" table="suppervisor" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="supId" type="java.lang.Integer">
+            <column name="Sup_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="com.bs.pojo.Employee" fetch="select">
+            <column name="Emp_Id" />
+        </many-to-one>
+        <many-to-one name="location" class="com.bs.pojo.Location" fetch="select">
+            <column name="Loc_Id" />
+        </many-to-one>
+        <many-to-one name="manager" class="com.bs.pojo.Manager" fetch="select">
+            <column name="M_Id" />
+        </many-to-one>
+        <property name="supName" type="string">
+            <column name="Sup_Name" length="45" />
+        </property>
+        <set name="suppliers" table="supplier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Sup_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Supplier" />
+        </set>
+    </class>
+</hibernate-mapping>

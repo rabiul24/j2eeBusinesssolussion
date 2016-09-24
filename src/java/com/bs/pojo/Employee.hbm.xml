@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Employee" table="employee" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="empId" type="java.lang.Integer">
+            <column name="Emp_Id" />
+            <generator class="identity" />
+        </id>
+        <property name="empName" type="string">
+            <column name="Emp_Name" length="45" />
+        </property>
+        <property name="eamil" type="string">
+            <column name="Eamil" length="45" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="Mobile" length="45" />
+        </property>
+        <property name="desgination" type="string">
+            <column name="Desgination" length="45" />
+        </property>
+        <property name="hireDate" type="date">
+            <column name="Hire_Date" length="10" />
+        </property>
+        <set name="drivers" table="driver" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Driver" />
+        </set>
+        <set name="addresses" table="address" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Address" />
+        </set>
+        <set name="saleses" table="sales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Sales" />
+        </set>
+        <set name="managers" table="manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Manager" />
+        </set>
+        <set name="suppliers" table="supplier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Supplier" />
+        </set>
+        <set name="logins" table="login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Login" />
+        </set>
+        <set name="suppervisors" table="suppervisor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Suppervisor" />
+        </set>
+        <set name="attendances" table="attendance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Attendance" />
+        </set>
+        <set name="BManagers" table="`b_ manager`" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.BManager" />
+        </set>
+        <set name="locations" table="location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Location" />
+        </set>
+        <set name="ctrlAccesses" table="ctrl_access" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.CtrlAccess" />
+        </set>
+        <set name="salaries" table="salary" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Emp_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Salary" />
+        </set>
+    </class>
+</hibernate-mapping>

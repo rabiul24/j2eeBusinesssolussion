@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../../template/template2.xhtml">
+
+            <ui:define name="title">
+                Product
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+                </f:facet>
+                <ul class="list-unstyled">
+                    <li><a href="insertProduct.xhtml">Insert</a></li>
+                    <li><a href="insertProduct.xhtml">Update</a></li>
+                    <li><a href="insertProduct.xhtml">Delete</a></li>
+                    <li><a href="insertProduct.xhtml">Show</a></li>
+                </ul>
+            </ui:define>
+
+            <ui:define name="content">
+                content
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

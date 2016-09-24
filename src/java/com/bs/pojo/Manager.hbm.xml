@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Manager" table="manager" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="MId" type="java.lang.Integer">
+            <column name="M_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="com.bs.pojo.Employee" fetch="select">
+            <column name="Emp_Id" />
+        </many-to-one>
+        <property name="MName" type="string">
+            <column name="M_Name" length="45" />
+        </property>
+        <set name="suppervisors" table="suppervisor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="M_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Suppervisor" />
+        </set>
+    </class>
+</hibernate-mapping>

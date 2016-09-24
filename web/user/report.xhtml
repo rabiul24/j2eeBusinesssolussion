@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/userTemplate.xhtml">
+
+            <ui:define name="title">
+                Report || #{loginBean.username}
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <table>
+                        <tr>
+                            <th>S/N</th>
+                            <th>MNo.</th>
+                            <th>GT</th>
+                            <th>View</th>
+                        </tr>
+                        <c:set var="dm" value="1"/>
+                        <c:forEach var="v" items="#{salesBean.sre1}">
+                            <tr>
+                                <td>${dm}</td>
+                                <td>#{v.memo}</td>
+                                <td>#{v.gtotl}</td>
+
+                                <td><p:commandButton value="View" action="printReport" actionListener="#{salesBean.memoFindview()}" ajax="false">
+                                        <f:setPropertyActionListener target="#{salesBean.memo}" value="#{v.memo}" />
+                                    </p:commandButton>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>                   
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

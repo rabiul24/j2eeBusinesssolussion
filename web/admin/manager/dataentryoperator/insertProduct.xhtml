@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../../template/template2.xhtml">
+
+            <ui:define name="title">
+                Insert product
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/leftMenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>
+                <ul id="leftmenu">
+                    <li><a class="active" href="#Product">Product</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="growl" life="20000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="id" value="Product Id"/>
+                        <p:inputText id="id" value="#{p.product.proId}" placeholder="Product id" rendered="true" immediate="false" maxlength="10"/>
+                        <p:outputLabel for="pname" value="Product Name"/>
+                        <p:inputText id="pname" value="#{p.product.proName}" placeholder="product name" immediate="false" rendered="true"/>
+                        <p:outputLabel for="insert1" />
+                        <p:commandButton id="insert1" value="Save" action="#{p.doInsertProduct}" ajax="false" styleClass="btn btn-primary" update="growl"/>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

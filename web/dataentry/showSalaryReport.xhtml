@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+         <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                title
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+                <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="javascript:;"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <f:view>
+                    <h:form>
+                        <p:dataTable var="slr" value="#{salaryReport.srlist}">
+                            <p:column headerText="SR Id">
+                                <h:outputText value="#{slr.srid}" />
+                            </p:column>
+                            <p:column headerText="Sr Name">
+                                <h:outputText value="#{slr.srname}" />
+                            </p:column>
+                            <p:column headerText="Bassic Salary">
+                                <h:outputText value="#{slr.basicsl}" />
+                            </p:column>
+                            <p:column headerText="Target ">
+                                <h:outputText value="#{slr.target}" />
+                            </p:column>
+                            <p:column headerText="TA DA">
+                                <h:outputText value="#{slr.tada}" />
+                            </p:column>
+                            <p:column headerText="Attendence">
+                                <h:outputText value="#{slr.attendence}" />
+                            </p:column>
+                            <p:column headerText="Gross Salary">
+                                <h:outputText value="#{slr.grrossl}" />
+                            </p:column>
+                            <p:column headerText="Net Salary">
+                                <h:outputText value="#{slr.netsl}" />
+                            </p:column>
+                            
+
+                            
+                        </p:dataTable>
+                        <h:commandButton value="View" action="showSalaryReport.xhtml" actionListener="#{salaryReport.veiwAllSalaryReport()}"/>
+                    </h:form>
+
+                </f:view>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

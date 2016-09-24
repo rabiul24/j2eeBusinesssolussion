@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <h:outputStylesheet name="./css/bs-menubar.css"/> 
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/style.css"/>
+        <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+        <title><ui:insert name="title">Insert Title</ui:insert></title>
+    </h:head>
+
+    <h:body>
+        <div class="container-fluid">
+            <div id="top">
+                <ui:insert name="top">
+                    <h:form style="">  
+                        <p:growl id="messages"/>
+
+                        <p:menubar style="padding-left: 25%;">
+                            <p:menuitem class="dashboard" value="Dashboard" url="http://localhost:8084/BusinessSolution/faces/login.xhtml" icon=" fa fa-home" />
+                            <p:submenu label="File" icon="fa fa-th-list">
+                                <p:submenu label="New" icon="ui-icon-contact">
+                                    <p:menuitem value="Project" url="#" />
+                                    <p:menuitem value="Other" url="#" />
+                                </p:submenu>
+                                <p:menuitem value="Open" url="#" />
+                                <p:separator />
+                                <p:menuitem value="Quit" url="#" />
+                            </p:submenu>
+
+                            <p:submenu label="Edit"  icon="fa fa-th-list">
+                                <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+                                <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+                            </p:submenu>
+
+                            <p:submenu label="Help"  icon="fa fa-th-list">
+                                <p:menuitem value="Contents" url="#" />
+                                <p:submenu label="Search" icon="ui-icon-search">
+                                    <p:submenu label="Text">
+                                        <p:menuitem value="Workspace" url="#" />
+                                    </p:submenu>
+                                    <p:menuitem value="File" url="#" />
+                                </p:submenu>
+                            </p:submenu>
+
+                            <p:submenu label="Actions"  icon="fa fa-th-list">
+                                <p:submenu label="Ajax" icon="ui-icon-refresh">
+                                    <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
+                                    <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+                                </p:submenu>
+                                <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                                    <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+                                </p:submenu>
+                            </p:submenu>
+                            <p:submenu label="DataEntry"  icon="fa fa-th-list">
+                                <p:menuitem value="Employee" url="../dataentry/employee.xhtml"  />
+                                <p:menuitem value="Business Manager" url="../dataentry/bManager.xhtml"  />
+                                <p:menuitem value=" Manager" url="../dataentry/manager.xhtml"  />
+                                <p:menuitem value="Suppervisor" url="../dataentry/suppervisor.xhtml"  />
+                                <p:menuitem value="Supplier" url="../dataentry/supplier.xhtml"  />
+                                <p:menuitem value="Address" url="../dataentry/address.xhtml"  />
+                                <p:menuitem value="Customer" url="../dataentry/customer.xhtml"  />
+                                <p:menuitem value="Location" url="../dataentry/location.xhtml"  />
+                                <p:menuitem value="Product" url="../dataentry/product.xhtml"  />
+                                <p:menuitem value="Salary" url="../dataentry/salary.xhtml"  />
+                                
+                            </p:submenu>
+
+                            <f:facet name="options">                               
+                                <p:commandButton value="Logout" action="#{loginBean.logout}" ajax="false" style=" width: 100px !important;" />
+                            </f:facet>
+                        </p:menubar>
+                    </h:form>
+                </ui:insert>
+            </div>
+            <div class="container-fluid">
+                <div class="col-xs-6 col-md-2">                
+                    <ui:insert name="left">
+                        <ul id="leftmenu">
+                            <li><a class="active" href="#home">Title Name</a></li>
+                            <li><a href="#news">Insert</a></li>
+                            <li><a href="#contact">Update</a></li>
+                            <li><a href="#about">Delete</a></li>
+                            <li><a href="#about">Show</a></li>
+                        </ul>
+                    </ui:insert>
+                </div>
+
+                <div id="content" class="col-xs-12 col-md-10">
+                    <ui:insert name="content">
+                        content page
+                    </ui:insert>
+                </div>
+            </div>
+
+            <div id="bottom" class=".col-xs-12">
+                <ui:insert name="bottom"> 
+                    <p> &copy; Copyright 2016-Group Project(IDB-BISEW-Round-27)  <a href="#top">Business Solutions</a></p>
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+</html>

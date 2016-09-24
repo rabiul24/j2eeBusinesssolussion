@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+            Insert  Attendance || BS
+            </ui:define>
+
+            <ui:define name="left">
+                 <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+                <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="javascript:;"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <h:form>
+                    <p:growl id="growl" life="20000"/>
+                    <table>
+                        <tr>
+                            <td>Attendance Id</td>
+                            <td>Employee Id</td>
+                            <td>Employee Name</td>
+                            <td>Status</td>
+                            <td>Present</td>
+                            <td>Absent</td>
+                            <td>Late</td>
+                            <td>Date Time</td>
+                        </tr>
+                        <c:forEach var="emp" items="#{atn.employeeAllList}">
+                            <tr>
+                                <td><input type="text" id="aid" value="#{atn.attendance.AId}" placeholder="Attendance id" rendered="true" immediate="false" maxlength="10"/></td>
+                                <td><input type="text" id="present" value="#{emp.empId}" placeholder="BManager name" immediate="false" rendered="true"/></td>
+                                <td><input type="text" id="present" value="#{emp.empName}" placeholder="BManager name" immediate="false" rendered="true"/></td>
+                                <td>
+                                    <h:selectOneMenu id="status" value="#{atn.attendance.status}">
+                                        <f:selectItem itemLabel="Select attendance status" itemValue="Select attendance status" noSelectionOption="true"/>
+                                        <f:selectItem itemLabel="Present" itemValue="Present" noSelectionOption="true"/>
+                                        <f:selectItem itemLabel="Absent" itemValue="Absent" noSelectionOption="true"/>
+                                        <f:selectItem itemLabel="Late" itemValue="Late" noSelectionOption="true"/>
+                                        <f:ajax event="change" listener="#{atn.checkStatus()}" render="present absent late"/>
+                                    </h:selectOneMenu>
+                                </td>
+                                <td><input type="text" id="present" value="#{atn.attendance.present}" placeholder="BManager name" immediate="false" rendered="true"/></td>
+                                <td><input type="text" id="absent" value="#{atn.attendance.absent}" placeholder="BManager name" immediate="false" rendered="true"/></td>
+                                <td><input type="text" id="late" value="#{atn.attendance.late}" placeholder="BManager name" immediate="false" rendered="true"/></td>
+                                <td><input type="text" id="date" value="#{atn.attendance.date}" placeholder="BManager name" immediate="false" rendered="true"/></td>
+                                <td><p:commandButton id="insert1" value="Save" action="#{atn.doInsertAttendance()}" ajax="false" styleClass="btn btn-primary" update="growl"/></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </h:form>
+                </center>
+                    <br/>
+                    <br/>
+                    <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,29 @@
+.ui-selectcheckboxmenu {
+    background-color: #fff !important;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: auto;
+}
+.ui-state-default {
+    box-shadow: 0 0 0 #fff inset !important;
+}
+.btn-primary:hover {
+  background-color: #286090  !important;
+  border-color: #204d74;
+  color: #fff;
+}
+.ui-selectcheckboxmenu .ui-selectcheckboxmenu-trigger {
+  background-color: #286090 !important;
+  border-bottom: 0 none;
+  border-right: 0 none;
+  border-top: 0 none;
+  cursor: pointer;
+  height: 100%;
+  padding: 0 3px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 26px;
+}
+

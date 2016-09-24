@@ -1,0 +1,118 @@
+body{
+    
+}
+.intxt{
+    max-width: 60px !important;
+    mim-width: 60px !important;
+    max-height: 10px !important;
+    min-height: 10px !important;
+    font-size: 10px !important;
+    color: #036fab !important;
+    direction: initial;
+}
+.intxt1{
+    max-width: 60px !important;
+    mim-width: 60px !important;
+    max-height: 10px !important;
+    min-height: 10px !important;
+    font-size: 10px !important;
+    color: #036fab !important;
+    direction: initial;
+    border: none !important;
+    box-shadow: none !important;
+}
+tr:before, tr:active{
+    background-color: #045491;
+}
+th{
+    border: 1px solid #1D6DC1;
+    background-color: #1D6DC1;
+    color: #eee;
+}
+
+.btntxt{
+    box-shadow: none !important;
+    background: #eea236;
+    border: none !important;
+    color: #000;
+    margin-left: 10px;
+    font-family: Time New Roman;
+    font-weight: normal;
+    
+}
+.btntxt:hover{
+    box-shadow: none !important;
+    background: #eea236;
+    border: none !important;
+    color: #fff;
+    margin-left: 10px;
+    font-family: Time New Roman;
+    font-weight: normal;
+    
+}
+.btntxt1{
+    box-shadow: none !important;
+    background: #eea236;
+    border: none !important;
+    color: #000;
+    margin-left: 10px;
+    font-family: Time New Roman;
+    font-weight: normal;
+    top: 5px;
+}
+.btntxt1:hover{
+    box-shadow: none !important;
+    background: #eea236;
+    border: none !important;
+    color: #fff;
+    margin-left: 10px;
+    font-family: Time New Roman;
+    font-weight: normal;
+    top: 5px;
+}
+.ui-selectcheckboxmenu .ui-selectcheckboxmenu-trigger {
+  background: #eea236 !important;
+ 
+}
+.stMenu{
+    widows: 100px !important;
+    background: transparent;
+}
+.ui-selectcheckboxmenu-panel { 
+  width: 157px !important;
+}
+.ui-selectcheckboxmenu-header .ui-selectcheckboxmenu-filter-container {
+  float: left;
+  margin-left: 5px;
+  position: relative;
+  width: 100px;
+}
+.ui-selectcheckboxmenu-header .ui-inputfield {
+  padding: 1px 20px 1px 2px;
+  width: 70px;
+}
+.ui-selectcheckboxmenu-header {
+  margin-bottom: 0.3em;
+  padding: 0.3em 0 0.3em 0.4em;
+  width: 152px;
+}
+table{
+    background-color: #ddd;
+    width: available;
+}
+
+.sidemenu{
+    position: relative !important;
+    width: 140px !important;
+    background: transparent !important;
+    border: none !important;
+}
+.menubtn{
+    background: #eea236 !important;
+      position: relative !important;
+}
+.menubtn:hover{
+    background: #eea236 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}

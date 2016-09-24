@@ -1,0 +1,70 @@
+#bottom {
+    background: #444 none repeat scroll 0 0;
+    bottom: 0;
+    color: #909090;
+    height: 30px;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+#content{
+    background-color: #f3f3f3;
+    border: 1px solid #c2c3c4;
+    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    position:absolute; 
+    left:235px; right:0;
+    top:110px; bottom:100px;
+    margin:auto;
+    float: right;
+
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}
+.ui-datatable thead th, .ui-datatable tfoot td {
+    background-color: #f3f3f3;
+    text-align: center;
+    max-width: max-content !important;
+    min-width: max-content !important;
+}
+.ui-datatable, th,  td {
+    text-align: center;
+}
+
+.ui-button {
+    background: #1d6891 none repeat scroll 0 0 !important;
+    border: medium none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: normal !important;
+    height: 35px;
+    margin-right: 0.1em;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+    width: 100px;
+}
+.ui-button:hover {
+    background: #1d6891 none repeat scroll 0 0 !important;
+    border: medium none !important;
+    box-shadow: none !important;
+    color: #ddd !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: normal !important;
+    height: 35px;
+    margin-right: 0.1em;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+    width: 100px;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/marketingmanagement?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">apcl123456</property>
+    <mapping resource="com/bs/pojo/BManager.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Salary.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Category.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Manager.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Customer.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Location.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Supplier.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Prices.hbm.xml"/>
+    <mapping resource="com/bs/pojo/CtrlAccess.hbm.xml"/>
+    <mapping resource="com/bs/pojo/User.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Attendance.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Role.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Driver.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Address.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Purchases.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Login.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Employee.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Sr.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Suppervisor.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Product.hbm.xml"/>
+    <mapping resource="com/bs/pojo/Sales.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

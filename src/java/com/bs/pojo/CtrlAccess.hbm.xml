@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.CtrlAccess" table="ctrl_access" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="ctlId" type="java.lang.Integer">
+            <column name="Ctl_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="com.bs.pojo.Employee" fetch="select">
+            <column name="Emp_Id" />
+        </many-to-one>
+        <many-to-one name="login" class="com.bs.pojo.Login" fetch="select">
+            <column name="User_Id" />
+        </many-to-one>
+        <property name="empName" type="string">
+            <column name="Emp_Name" length="45" />
+        </property>
+        <property name="userRole" type="string">
+            <column name="User_Role" length="45" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

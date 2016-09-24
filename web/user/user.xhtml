@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/userTemplate.xhtml">
+
+            <ui:define name="title">
+                User || #{loginBean.username}
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <center>
+
+                        <p:selectCheckboxMenu  value="#{salesBean.selectedPoduct}" label="SP" class="stMenu" style="width: 100px !important"
+                                               filter="true" filterMatchMode="startsWith" panelStyle="width:250px" >
+
+                            <f:selectItems value="#{salesBean.productList}" var="v2" itemValue="#{v2.pro_Name}" itemLabel="#{v2.pro_Name}" />
+                        </p:selectCheckboxMenu>
+                        <p:commandButton id="showbtn" value="Show" actionListener="#{salesBean.createPurForm}" ajax="false" update="display" class="btntxt"/>
+
+
+
+                        <p:outputPanel id="display" style="padding-left:5px;margin-top:10px"> 
+
+                            <table>
+                                <tr>
+                                    <th>Pname</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </tr>
+                                <c:set var="dm" value="0"/>
+                                <c:forEach  var="pp" items="#{salesBean.modelPurForm}">                                
+                                    <tr>                                   
+                                        <td> <p:inputText id="pname${pp.pro_Id}" value="${pp.pro_Name}" class="intxt1" readonly="true" rendered="true"/> </td>
+                                        <td> <p:inputText id="qty${pp.pro_Id}" value="#{salesBean.qty[pp.pro_Id]}" class="intxt" rendered="true" required="true">
+                                                <p:ajax event="keyup" process="qty${pp.pro_Id}" listener="#{salesBean.cTotalPrice(pp.pro_Id)}" update="total${pp.pro_Id} gt"  />
+                                            </p:inputText> 
+                                        </td>
+
+                                        <td> <p:inputText id="total${pp.pro_Id}" value="#{salesBean.totalPrice[pp.pro_Id]}" readonly="true" rendered="true"  class="intxt" required="true"/> </td>
+                                    </tr>
+
+                                    <c:set var="dm" value="${dm+1}"/>
+
+                                </c:forEach> 
+                                <td></td>
+                                <td>GT</td>
+                                <td><p:inputText id="gt" value="#{salesBean.gtotal}" readonly="true" rendered="true" class="intxt"/> </td>
+                            </table>                   
+                            <p:commandButton value="Sell" action="#{salesBean.doSave(request)}" ajax="false" update="tst"  class="btntxt1"/>
+                        </p:outputPanel>
+                        
+                    </center>
+                </h:form> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

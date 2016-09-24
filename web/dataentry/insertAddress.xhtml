@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+         <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Insert Address || BS
+            </ui:define>
+            <ui:define name="left">
+                   <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+                <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="address.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertAddress.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateAddress.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteAddress.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showAddress.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define  name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <h:form>
+                      <p:growl id="growl" life="20000"/>
+                    <p:panelGrid columns="2"> 
+                        <p:outputLabel for="village" value="village Name"/>
+                        <p:inputText id="village" value="#{a.address.vaillage}" placeholder="village name" immediate="false" rendered="true"/>
+                        <p:outputLabel for="upzila" value="Upazela"/>
+                        <p:inputText id="upzila" value="#{a.address.upazilla}" placeholder="Upazela" immediate="false" rendered="true"/>
+                        <p:outputLabel for="district" value="District"/>
+                        <p:inputText id="district" value="#{a.address.district}" placeholder="District" immediate="false" rendered="true"/>
+                        <p:outputLabel for="pcode" value="Post Code"/>
+                        <p:inputText id="pcode" value="#{a.address.postCode}" placeholder="Post Code" immediate="false" rendered="true" validatorMessage="Post Code Must be 4 Number">
+                            <f:validateRegex pattern=".*[0-9]{4}"/>
+                        </p:inputText>
+                        <p:outputLabel for="eid" value="Employee Id"/>
+                        <p:inputText id="eid" value="#{a.employee.empId}" placeholder="Employee Id" immediate="false" rendered="true"/>
+                        <p:outputLabel for="insert2" />
+                        <p:commandButton id="insert2" value="Save" action="#{a.doSaveAddress()}" ajax="false" styleClass="btn btn-primary" update="growl"/>
+                    </p:panelGrid>
+                </h:form>
+                </center>
+                    <br/>
+                    <br/>
+                    <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,35 @@
+body{
+    background-color: black !important;   
+}
+.ui-helper-clearfix {
+    display: none !important;
+}
+.username, .password{
+    max-width: 95% !important;
+    min-width: 95% !important;
+    max-height: 40px !important;
+    min-height: 40px !important;
+    padding: 10px !important;
+    margin: 7px !important;
+    background-color: #e3e3e3 !important;
+}
+.logIn{
+    
+    background: #1B52A7 -moz-linear-gradient(center top , rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)) repeat scroll 0 0 !important; 
+    max-width: 120px !important; 
+    min-width: 120px !important; 
+    max-height: 40px !important;
+    min-height: 40px !important;
+    color: #fff !important;
+    margin: 15px !important;
+    border: none !important;
+    box-shadow: 0 0 0px !important;
+}
+
+/*.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  background: #85b2cb -moz-linear-gradient(center top , rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)) repeat scroll 0 0;
+  border: 1px solid #7096ab;
+  box-shadow: 0 0 8px #85b2cb;
+  color: #313131;
+  font-weight: bold;
+}*/

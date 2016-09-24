@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                Updaet Employee || BS
+            </ui:define>
+
+            <ui:define name="left">
+                <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+              <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="employee.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertEmployee.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateEmployee.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteEmployee.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showEmployee.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <h:form>
+                    <p:growl id="growl" life="20000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="eid" value="Employe Id"  />
+                        <p:selectOneMenu id="eid" value="#{e.employee.empId}"  style="width: 185px">
+                            <f:selectItem itemLabel="Select Employe Id" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{e.employeeAllList}" var="ee" itemValue="#{ee.empId}" itemLabel="#{ee.empId}"/>  
+                            <p:ajax event="change" listener="#{e.findAllEmployeeById()}" update="ename eemail ephone edsig edat  "/>
+                        </p:selectOneMenu>                       
+                        <p:outputLabel for="ename" value="Employee Name"/>
+                        <p:inputText id="ename" value="#{e.employee.empName}" immediate="false" rendered="true" validatorMessage="name is invalid">
+                              <f:validateRegex  pattern="[a-zA-Z]+[.]?[ ]?[A-Za-z]+" />
+                        </p:inputText>
+                        <p:outputLabel for="ename" value="Email"/>
+                          <p:inputText id="eemail" value="#{e.employee.eamil}" placeholder="aaaa@gmail.com" immediate="false" rendered="true" validatorMessage="Invalid Email">
+                            <f:validateRegex  pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                        </p:inputText>   
+                        <p:outputLabel for="ephone" value="Phone No"/>
+                        <p:inputText id="ephone" value="#{e.employee.mobile}" placeholder="Phone No" immediate="false" rendered="true"  validatorMessage="phone no must 11 Character" >
+                         <f:validateRegex  pattern="[0-9]{11}" />
+                        </p:inputText>
+                        <p:outputLabel for="edsig" value="Designation"/>
+                        <p:selectOneMenu id="edsig" value="#{e.employee.desgination}" style="width: 185px">
+                            <f:selectItem itemLabel="Select Designation" itemValue="" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="BM" itemValue="BM"/>
+                            <f:selectItem itemLabel="Manager" itemValue="Manager" />
+                            <f:selectItem itemLabel="Supervisor" itemValue="Supervisor" />
+                            <f:selectItem itemLabel="Supplier" itemValue="Supplier" />
+                            <f:selectItem itemLabel="SR" itemValue="SR" />
+                            <f:selectItem itemLabel="Driver" itemValue="Driver" />
+                          
+                        </p:selectOneMenu> 
+                        <p:outputLabel for="edat" value="Hier Date"/>
+                        <p:calendar id="edat" value="#{e.employee.hireDate}"  immediate="false" rendered="true"/>
+                        <p:outputLabel for="update1"/>
+                        <p:commandButton id="update1" value="Update" action="#{e.updateEmployee()}" ajax="false" styleClass="btn btn-primary" update="growl"/>
+                    </p:panelGrid>
+                </h:form>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

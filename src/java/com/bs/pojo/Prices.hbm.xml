@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Prices" table="prices" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="pricesId" type="java.lang.Integer">
+            <column name="Prices_Id" />
+            <generator class="identity" />
+        </id>
+        <property name="proName" type="string">
+            <column name="Pro_Name" length="45" />
+        </property>
+        <property name="purPrice" type="java.lang.Double">
+            <column name="Pur_Price" precision="22" scale="0" />
+        </property>
+        <property name="salesPrice" type="java.lang.Double">
+            <column name="Sales_Price" precision="22" scale="0" />
+        </property>
+        <property name="id" type="java.lang.Integer">
+            <column name="Id" />
+        </property>
+    </class>
+</hibernate-mapping>

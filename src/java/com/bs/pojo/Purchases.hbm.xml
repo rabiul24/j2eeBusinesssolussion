@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Purchases" table="purchases" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="purId" type="java.lang.Integer">
+            <column name="Pur_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="com.bs.pojo.Product" fetch="select">
+            <column name="Pro_Id" not-null="true" />
+        </many-to-one>
+        <property name="purName" type="string">
+            <column name="Pur_Name" length="45" not-null="true" />
+        </property>
+        <property name="serialNo" type="string">
+            <column name="SerialNo" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="purchasesDate" type="date">
+            <column name="Purchases_Date" length="10" not-null="true" />
+        </property>
+        <property name="price" type="double">
+            <column name="Price" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="quantity" type="int">
+            <column name="Quantity" not-null="true" />
+        </property>
+        <property name="totalPrice" type="double">
+            <column name="Total_Price" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

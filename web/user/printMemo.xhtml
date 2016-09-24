@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/userTemplate.xhtml">
+
+            <ui:define name="title">
+                Report || #{loginBean.username}
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                     <h2>ABC Company Ltd.</h2>
+                     <h4>SId: #{loginBean.username}</h4>
+                     <h4>Memo No.: #{salesBean.memo}</h4>
+                     <h4>Date: #{salesBean.date}</h4>
+                        <table>
+                            <tr>
+                                <th>SN</th>
+                                <th>Id</th>
+                                <th>Pname</th>
+                                <th>qty</th>                                
+                            </tr>
+                            <c:set var="dm" value="1"/>
+                            <c:forEach var="ss1" items="#{salesBean.slsList11}">
+                                <tr>
+                                    <td>${dm}</td>
+                                    <td>${ss1.proid}</td>
+                                    <td>${ss1.proName}</td>
+                                    <td>${ss1.quantity}</td>
+                                    <td>${ss1.total}</td>
+                                </tr>
+                                <c:set var="dm" value="${dm+1}"/>
+                            </c:forEach>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><h:outputText value="#{salesBean.gtota2}" /></td>
+                            </tr>
+                        </table>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <h:outputStylesheet name="./css/bootstrap.css"/> 
+        <h:outputStylesheet name="./css/login.css"/> 
+        <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+    </h:head>
+    <h:body onload="PF('dlg3').show();">
+
+        <p:dialog  widgetVar="dlg3" modal="true" width="450" height="400" showEffect="explode" resizable="false" style="background: #c9c9c9;">
+            <center>
+                <p:graphicImage name="./css/img/logo.png" width="200" height="200"/>
+                <h:form>
+                    <p:growl id="growl" life="2000"/> 
+                    <p:inputText value="#{loginBean.username}" type="text" id="username" class="username" placeholder="username" immediate="false" required="true"/>
+                    <p:password value="#{loginBean.password}" id="password" class="password" placeholder="password" autocomplete="false" immediate="false" required="true"/>
+                    <p:commandButton value="LogIn" class="logIn" id="btn" action="#{loginBean.doLogincgeck}" ajax="false" update="growl" icon="fa fa-check" />
+                </h:form>
+            </center>
+        </p:dialog>
+    </h:body>
+</html>
+

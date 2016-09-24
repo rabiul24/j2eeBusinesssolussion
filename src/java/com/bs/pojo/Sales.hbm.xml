@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Sales" table="sales" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="salesId" type="java.lang.Integer">
+            <column name="Sales_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employee" class="com.bs.pojo.Employee" fetch="select">
+            <column name="Emp_Id" />
+        </many-to-one>
+        <many-to-one name="product" class="com.bs.pojo.Product" fetch="select">
+            <column name="Pro_Id" />
+        </many-to-one>
+        <property name="proName" type="string">
+            <column name="Pro_Name" length="45" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="Price" precision="22" scale="0" />
+        </property>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="Total" precision="22" scale="0" />
+        </property>
+        <property name="sellDate" type="date">
+            <column name="Sell_Date" length="10" />
+        </property>
+        <property name="memoNo" type="java.lang.Integer">
+            <column name="MemoNo" />
+        </property>
+    </class>
+</hibernate-mapping>

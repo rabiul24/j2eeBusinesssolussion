@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+         <ui:composition template="./../template/template2.xhtml">
+
+            <ui:define name="title">
+                 Update Salary || BS
+            </ui:define>
+            <ui:define name="left">
+                   <f:facet name="head">
+                    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+                    <h:outputStylesheet name="./css/formStyle.css"/>
+                    <h:outputStylesheet name="./css/leftmenubar.css"/>
+                    <h:outputStylesheet library="awesome" name="./css/font-awesome.css"/>
+                </f:facet>                
+               <div class="row">
+                    <div class="col-sm-2">
+                        <nav class="nav-sidebar">
+                            <ul class="nav">
+                                <li class="active"><a href="salary.xhtml"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                                <li><a href="insertSalary.xhtml"><i class="glyphicon glyphicon-plus-sign"></i>  New Add</a></li>
+                                <li><a href="updateSalary.xhtml"><i class="glyphicon glyphicon-refresh"></i>  Update</a></li>
+                                <li><a href="deleteSalary.xhtml"><i class="glyphicon glyphicon-remove"></i>  Delete</a></li>
+                                <li class="nav-divider"></li>
+                                <li><a href="showSalary.xhtml"><i class="glyphicon glyphicon-list-alt"></i>  Show Data</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define  name="content">
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <h:form>
+                      <p:growl id="growl" life="20000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="sid" value="Salary Id"/>
+                        <p:selectOneMenu id="sid" value="#{sla.salary.salaryId}"  style="width: 185px">
+                            <f:selectItem itemLabel="Select salary Id" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{sla.salaryAllList}" var="s" itemValue="#{s.salaryId}" itemLabel="#{s.salaryId}"/>  
+                            <p:ajax event="change" listener="#{sla.findAllSalaryById()}" update=" empId empName bsalry target tada srid"/>
+                        </p:selectOneMenu>  
+                        <p:outputLabel for="empId" value="Emaployee Id"/>
+                        <p:inputText id="empId" value="#{sla.employee.empId}" placeholder="Emaployee Id" immediate="false" rendered="true"/>
+                        <p:outputLabel for="empName" value="Emaployee Name"/>
+                        <p:inputText id="empName" value="#{sla.salary.empName}" placeholder="Emaployee Name" immediate="false" rendered="true" >
+            
+                        </p:inputText>
+                        <p:outputLabel for="bsalry" value="Basic Salary"/>
+                        <p:inputText id="bsalry" value="#{sla.salary.basicSalary}" placeholder="Basic Salary" immediate="false" rendered="true"/>
+                        <p:outputLabel for="target" value="Target"/>
+                        <p:inputText id="target" value="#{sla.salary.target}" placeholder="Target" immediate="false" rendered="true"/>
+                        <p:outputLabel for="tada" value="TaDa"/>
+                        <p:inputText id="tada" value="#{sla.salary.taDa}" placeholder="TaDa" immediate="false" rendered="true"/>
+                        <p:outputLabel for="srid" value="Sr Id"/>
+                        <p:inputText id="srid" value="#{sla.sr.srId}" placeholder="Sr Id" immediate="false" rendered="true"/>
+                        <p:outputLabel for="insert2" />
+                        <p:commandButton id="insert2" value="Update" action="#{sla.updateSalary()}" ajax="false" styleClass="btn btn-primary" update="growl"/>
+                    </p:panelGrid>
+                </h:form>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

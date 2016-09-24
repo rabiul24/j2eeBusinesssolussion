@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Product" table="product" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="proId" type="java.lang.Integer">
+            <column name="Pro_Id" />
+            <generator class="identity" />
+        </id>
+        <property name="proName" type="string">
+            <column name="Pro_Name" length="45" />
+        </property>
+        <property name="stock" type="java.lang.Integer">
+            <column name="stock" />
+        </property>
+        <set name="saleses" table="sales" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Pro_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Sales" />
+        </set>
+        <set name="purchaseses" table="purchases" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Pro_Id" not-null="true" />
+            </key>
+            <one-to-many class="com.bs.pojo.Purchases" />
+        </set>
+    </class>
+</hibernate-mapping>

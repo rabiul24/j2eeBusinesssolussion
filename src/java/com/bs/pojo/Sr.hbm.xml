@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 4, 2016 8:27:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.bs.pojo.Sr" table="sr" catalog="marketingmanagement" optimistic-lock="version">
+        <id name="srId" type="java.lang.Integer">
+            <column name="Sr_Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="attendance" class="com.bs.pojo.Attendance" fetch="select">
+            <column name="A_Id" />
+        </many-to-one>
+        <many-to-one name="location" class="com.bs.pojo.Location" fetch="select">
+            <column name="Loc_Id" />
+        </many-to-one>
+        <property name="srName" type="string">
+            <column name="Sr_Name" length="45" />
+        </property>
+        <set name="salaries" table="salary" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Sr_Id" />
+            </key>
+            <one-to-many class="com.bs.pojo.Salary" />
+        </set>
+    </class>
+</hibernate-mapping>
